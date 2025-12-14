@@ -16,10 +16,7 @@ const Dialog = ({ open, onOpenChange, children }: DialogProps) => {
       onClick={() => onOpenChange?.(false)}
     >
       <div className="fixed inset-0 bg-black/50" />
-      <div
-        className="relative z-50"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="relative z-50" onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
     </div>
@@ -106,4 +103,3 @@ export {
   DialogTitle,
   DialogDescription,
 };
-

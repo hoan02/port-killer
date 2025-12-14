@@ -35,8 +35,8 @@ export function KillDialog({
             Confirm Kill Process
           </DialogTitle>
           <DialogDescription>
-            Are you sure you want to kill process{" "}
-            <strong>{processName}</strong> (PID: <strong>{pid}</strong>)?
+            Are you sure you want to kill process <strong>{processName}</strong>{" "}
+            (PID: <strong>{pid}</strong>)?
           </DialogDescription>
         </DialogHeader>
         <div className="py-4">
@@ -53,11 +53,7 @@ export function KillDialog({
           >
             Cancel
           </Button>
-          <Button
-            variant="destructive"
-            onClick={onConfirm}
-            disabled={killing}
-          >
+          <Button variant="destructive" onClick={onConfirm} disabled={killing}>
             {killing ? "Killing..." : "Kill Process"}
           </Button>
         </DialogFooter>
@@ -65,4 +61,3 @@ export function KillDialog({
     </Dialog>
   );
 }
-
