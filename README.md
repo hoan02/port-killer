@@ -6,8 +6,10 @@
 
 ### Tải về
 
-- **Windows Installer**: [Tải về phiên bản mới nhất](https://github.com/hoan02/port-killer/releases/latest)
+- **MSI Installer** (Khuyến nghị): [port-killer_0.1.0_x64_en-US.msi](https://github.com/hoan02/port-killer/releases/latest/download/port-killer_0.1.0_x64_en-US.msi)
+- **NSIS Installer**: [port-killer_0.1.0_x64-setup.exe](https://github.com/hoan02/port-killer/releases/latest/download/port-killer_0.1.0_x64-setup.exe)
 - **Portable Executable**: [port-killer.exe](https://github.com/hoan02/port-killer/releases/latest/download/port-killer.exe)
+- **Xem tất cả releases**: [Releases](https://github.com/hoan02/port-killer/releases)
 
 ### Cài đặt Nhanh
 
