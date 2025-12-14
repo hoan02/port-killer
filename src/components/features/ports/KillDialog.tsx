@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { AlertTriangle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface KillDialogProps {
   open: boolean;
@@ -26,24 +27,23 @@ export function KillDialog({
   onConfirm,
   killing,
 }: KillDialogProps) {
+  const { t } = useTranslation();
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent>
         <DialogHeader>
           <DialogTitle className="flex items-center gap-2">
             <AlertTriangle className="h-5 w-5 text-destructive" />
-            Confirm Kill Process
+            {t("dialog.kill.title")}
           </DialogTitle>
           <DialogDescription>
-            Are you sure you want to kill process <strong>{processName}</strong>{" "}
-            (PID: <strong>{pid}</strong>)?
+            {t("dialog.kill.description")} <strong>{processName}</strong> (PID:{" "}
+            <strong>{pid}</strong>)?
           </DialogDescription>
         </DialogHeader>
         <div className="py-4">
-          <p className="text-sm text-destructive">
-            This action cannot be undone. The process will be terminated
-            immediately.
-          </p>
+          <p className="text-sm text-destructive">{t("dialog.kill.warning")}</p>
         </div>
         <DialogFooter>
           <Button
@@ -51,10 +51,10 @@ export function KillDialog({
             onClick={() => onOpenChange(false)}
             disabled={killing}
           >
-            Cancel
+            {t("dialog.kill.cancel")}
           </Button>
           <Button variant="destructive" onClick={onConfirm} disabled={killing}>
-            {killing ? "Killing..." : "Kill Process"}
+            {killing ? t("dialog.kill.killing") : t("dialog.kill.confirm")}
           </Button>
         </DialogFooter>
       </DialogContent>

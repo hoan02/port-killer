@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { Card } from "@/components/ui/card";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import { AlertCircle } from "lucide-react";
-import { Header } from "@/components/layout/Header";
+import { TitleBar } from "@/components/layout/TitleBar";
 import { PortList } from "@/components/features/ports/PortList";
 import { KillDialog } from "@/components/features/ports/KillDialog";
 import { usePorts } from "@/hooks/usePorts";
@@ -37,39 +36,38 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-background p-4 md:p-8">
-      <div className="max-w-7xl mx-auto space-y-6">
-        <Card>
-          <Header />
-        </Card>
+    <div className="min-h-screen bg-background">
+      <TitleBar />
+      <div className="pt-9 p-4 md:p-8">
+        <div className="max-w-7xl mx-auto space-y-6">
+          {error && (
+            <Alert variant="destructive">
+              <AlertCircle className="h-4 w-4" />
+              <AlertDescription>{error}</AlertDescription>
+            </Alert>
+          )}
 
-        {error && (
-          <Alert variant="destructive">
-            <AlertCircle className="h-4 w-4" />
-            <AlertDescription>{error}</AlertDescription>
-          </Alert>
-        )}
-
-        <PortList
-          ports={ports}
-          loading={loading}
-          killingPid={killingPid}
-          searchTerm={searchTerm}
-          onSearchChange={setSearchTerm}
-          onRefresh={loadPorts}
-          onKillClick={handleKillClick}
-        />
-
-        {confirmKill && (
-          <KillDialog
-            open={!!confirmKill}
-            onOpenChange={(open) => !open && setConfirmKill(null)}
-            processName={confirmKill.name}
-            pid={confirmKill.pid}
-            onConfirm={handleKillConfirm}
-            killing={killingPid === confirmKill.pid}
+          <PortList
+            ports={ports}
+            loading={loading}
+            killingPid={killingPid}
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            onRefresh={loadPorts}
+            onKillClick={handleKillClick}
           />
-        )}
+
+          {confirmKill && (
+            <KillDialog
+              open={!!confirmKill}
+              onOpenChange={(open) => !open && setConfirmKill(null)}
+              processName={confirmKill.name}
+              pid={confirmKill.pid}
+              onConfirm={handleKillConfirm}
+              killing={killingPid === confirmKill.pid}
+            />
+          )}
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,72 @@
+{
+  "app": {
+    "title": "Port Killer",
+    "description": "View and manage processes using TCP ports in LISTENING state"
+  },
+  "ports": {
+    "table": {
+      "port": "Port",
+      "processName": "Process Name",
+      "pid": "PID",
+      "protocol": "Protocol",
+      "action": "Action"
+    },
+    "noPorts": "No listening ports found.",
+    "kill": "Kill",
+    "killing": "Killing...",
+    "stats": {
+      "showing": "Showing",
+      "of": "of",
+      "listeningPort": "listening port",
+      "listeningPorts": "listening ports"
+    },
+    "detail": {
+      "title": "Port Details",
+      "description": "Detailed information about the listening port",
+      "view": "View Details",
+      "protocol": "Protocol",
+      "state": "State",
+      "localAddress": "Local Address",
+      "close": "Close"
+    }
+  },
+  "search": {
+    "placeholder": "Search by port, process name, or PID...",
+    "quickFilters": "Quick filters:",
+    "clear": "Clear",
+    "refresh": "Refresh"
+  },
+  "dialog": {
+    "kill": {
+      "title": "Confirm Kill Process",
+      "description": "Are you sure you want to kill process",
+      "warning": "This action cannot be undone. The process will be terminated immediately.",
+      "cancel": "Cancel",
+      "confirm": "Kill Process",
+      "killing": "Killing..."
+    }
+  },
+  "pagination": {
+    "showing": "Showing",
+    "to": "to",
+    "of": "of",
+    "ports": "ports",
+    "perPage": "per page",
+    "previous": "Previous",
+    "next": "Next"
+  },
+  "titleBar": {
+    "minimize": "Minimize",
+    "maximize": "Maximize",
+    "restore": "Restore",
+    "close": "Close"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystem": "System"
+  }
+}

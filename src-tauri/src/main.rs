@@ -22,15 +22,16 @@ struct PortInfo {
     port: u16,
     pid: u32,
     process_name: String,
+    process_path: String,
 }
 
-/// Get the process name from a PID
-fn get_process_name(pid: u32) -> String {
+/// Get the process path from a PID
+fn get_process_path(pid: u32) -> String {
     unsafe {
         let handle = OpenProcess(PROCESS_QUERY_INFORMATION | PROCESS_VM_READ, false, pid);
 
         if handle.is_err() {
-            return format!("PID {}", pid);
+            return String::new();
         }
 
         let handle = handle.unwrap();
@@ -40,7 +41,7 @@ fn get_process_name(pid: u32) -> String {
         CloseHandle(handle).ok();
 
         if result == 0 {
-            return format!("PID {}", pid);
+            return String::new();
         }
 
         // Convert to string, removing null terminator
@@ -48,12 +49,7 @@ fn get_process_name(pid: u32) -> String {
         buffer.truncate(len);
 
         let os_string = OsString::from_wide(&buffer);
-        os_string
-            .to_string_lossy()
-            .split('\\')
-            .last()
-            .unwrap_or("Unknown")
-            .to_string()
+        os_string.to_string_lossy().to_string()
     }
 }
 
@@ -127,12 +123,22 @@ fn get_ipv4_ports() -> Result<Vec<PortInfo>, String> {
             if row.dwState == 2 {
                 let port = ntohs((row.dwLocalPort & 0xFFFF) as u16);
                 let pid = row.dwOwningPid;
-                let process_name = get_process_name(pid);
+                let process_path = get_process_path(pid);
+                let process_name = if process_path.is_empty() {
+                    format!("PID {}", pid)
+                } else {
+                    process_path
+                        .split('\\')
+                        .last()
+                        .unwrap_or("Unknown")
+                        .to_string()
+                };
 
                 ports.push(PortInfo {
                     port,
                     pid,
                     process_name,
+                    process_path,
                 });
             }
         }
@@ -206,12 +212,22 @@ fn get_ipv6_ports() -> Result<Vec<PortInfo>, String> {
             if row.dwState == 2 {
                 let port = ntohs((row.dwLocalPort & 0xFFFF) as u16);
                 let pid = row.dwOwningPid;
-                let process_name = get_process_name(pid);
+                let process_path = get_process_path(pid);
+                let process_name = if process_path.is_empty() {
+                    format!("PID {}", pid)
+                } else {
+                    process_path
+                        .split('\\')
+                        .last()
+                        .unwrap_or("Unknown")
+                        .to_string()
+                };
 
                 ports.push(PortInfo {
                     port,
                     pid,
                     process_name,
+                    process_path,
                 });
             }
         }

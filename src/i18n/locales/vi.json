@@ -1,0 +1,73 @@
+{
+  "app": {
+    "title": "Port Killer",
+    "description": "Xem và quản lý các tiến trình đang sử dụng cổng TCP ở trạng thái LISTENING"
+  },
+  "ports": {
+    "table": {
+      "port": "Cổng",
+      "processName": "Tên Tiến Trình",
+      "pid": "PID",
+      "protocol": "Giao Thức",
+      "action": "Thao Tác"
+    },
+    "noPorts": "Không tìm thấy cổng nào đang lắng nghe.",
+    "kill": "Kết Thúc",
+    "killing": "Đang kết thúc...",
+    "stats": {
+      "showing": "Hiển thị",
+      "of": "trong tổng số",
+      "listeningPort": "cổng đang lắng nghe",
+      "listeningPorts": "cổng đang lắng nghe"
+    },
+    "detail": {
+      "title": "Chi Tiết Cổng",
+      "description": "Thông tin chi tiết về cổng đang lắng nghe",
+      "view": "Xem Chi Tiết",
+      "protocol": "Giao Thức",
+      "state": "Trạng Thái",
+      "localAddress": "Địa Chỉ Cục Bộ",
+      "close": "Đóng"
+    }
+  },
+  "search": {
+    "placeholder": "Tìm kiếm theo cổng, tên tiến trình hoặc PID...",
+    "quickFilters": "Bộ lọc nhanh:",
+    "clear": "Xóa",
+    "refresh": "Làm mới"
+  },
+  "dialog": {
+    "kill": {
+      "title": "Xác Nhận Kết Thúc Tiến Trình",
+      "description": "Bạn có chắc chắn muốn kết thúc tiến trình",
+      "warning": "Hành động này không thể hoàn tác. Tiến trình sẽ bị kết thúc ngay lập tức.",
+      "cancel": "Hủy",
+      "confirm": "Kết Thúc Tiến Trình",
+      "killing": "Đang kết thúc..."
+    }
+  },
+  "pagination": {
+    "showing": "Hiển thị",
+    "to": "đến",
+    "of": "trong tổng số",
+    "ports": "cổng",
+    "perPage": "mỗi trang",
+    "previous": "Trước",
+    "next": "Sau"
+  },
+  "titleBar": {
+    "minimize": "Thu nhỏ",
+    "maximize": "Phóng to",
+    "restore": "Khôi phục",
+    "close": "Đóng"
+  },
+  "settings": {
+    "title": "Cài Đặt",
+    "language": "Ngôn Ngữ",
+    "theme": "Giao Diện",
+    "themeLight": "Sáng",
+    "themeDark": "Tối",
+    "themeSystem": "Hệ Thống"
+  }
+}
+

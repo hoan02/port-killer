@@ -1,7 +1,7 @@
 {
   "name": "port-killer",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -20,7 +20,9 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
     "lucide-react": "^0.344.0",
-    "tailwind-merge": "^2.2.0"
+    "tailwind-merge": "^2.2.0",
+    "i18next": "^23.7.6",
+    "react-i18next": "^13.5.0"
   },
   "devDependencies": {
     "@tauri-apps/cli": "^2.0.0",

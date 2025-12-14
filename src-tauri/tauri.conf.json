@@ -1,6 +1,6 @@
 {
   "productName": "port-killer",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "identifier": "com.portkiller.app",
   "build": {
     "beforeDevCommand": "npm run dev",
@@ -11,15 +11,22 @@
   "app": {
     "windows": [
       {
+        "label": "main",
         "title": "Port Killer",
         "width": 1000,
         "height": 700,
         "resizable": true,
-        "fullscreen": false
+        "maximizable": true,
+        "minimizable": true,
+        "closable": true,
+        "fullscreen": false,
+        "decorations": false,
+        "transparent": false
       }
     ],
     "security": {
-      "csp": null
+      "csp": null,
+      "capabilities": ["main-capability"]
     }
   },
   "bundle": {

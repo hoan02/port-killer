@@ -83,5 +83,29 @@ body {
   height: 100vh;
 }
 
+/* Tauri drag region */
+[data-tauri-drag-region] {
+  -webkit-app-region: drag;
+  app-region: drag;
+}
+
+/* Prevent dragging on interactive elements */
+button,
+input,
+select,
+textarea,
+a,
+[role="button"],
+[role="menuitem"] {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
+/* No drag region for window controls */
+.no-drag {
+  -webkit-app-region: no-drag;
+  app-region: no-drag;
+}
+
 
 
