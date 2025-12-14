@@ -1,4 +1,4 @@
-import { Settings, Languages, Moon, Sun, Monitor } from "lucide-react";
+import { Settings, Moon, Sun, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 export function SettingsMenu() {
   const { t } = useTranslation();
   const { currentLanguage, changeLanguage } = useLanguage();
-  const { theme, resolvedTheme, setTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -103,4 +103,3 @@ export function SettingsMenu() {
     </DropdownMenu>
   );
 }
-
