@@ -69,7 +69,7 @@ export function Pagination({
           <select
             value={itemsPerPage}
             onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
-            className="px-1.5 py-0.5 border border-border rounded text-xs bg-background hover:bg-accent/50 cursor-pointer"
+            className="px-1.5 py-0.5 border border-border rounded text-xs bg-background hover:bg-border/60 dark:hover:bg-border/40 cursor-pointer"
           >
             <option value={10}>10</option>
             <option value={25}>25</option>
@@ -111,7 +111,7 @@ export function Pagination({
                   "h-7 min-w-[28px] px-2 text-xs rounded-sm",
                   currentPage === pageNum 
                     ? "bg-primary text-primary-foreground" 
-                    : "hover:bg-accent"
+                    : "hover:bg-border/60 dark:hover:bg-border/40"
                 )}
               >
                 {pageNum}
@@ -123,7 +123,7 @@ export function Pagination({
         <Button
           variant="ghost"
           size="icon"
-          className="h-7 w-7 rounded-sm hover:bg-accent"
+          className="h-7 w-7 rounded-sm hover:bg-border/60 dark:hover:bg-border/40"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
@@ -133,4 +133,3 @@ export function Pagination({
     </div>
   );
 }
-

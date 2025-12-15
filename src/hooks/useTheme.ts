@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 type Theme = "light" | "dark" | "system";
 
-const THEME_STORAGE_KEY = "port-killer-theme";
+const THEME_STORAGE_KEY = "open-port-theme";
 
 export function useTheme() {
   const [theme, setTheme] = useState<Theme>(() => {

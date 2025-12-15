@@ -124,7 +124,7 @@ export function PortTable({
                   <Button
                     variant="ghost"
                     size="icon"
-                    className="h-7 w-7 rounded-sm hover:bg-accent"
+                    className="h-7 w-7 rounded-sm hover:bg-border/60 dark:hover:bg-border/40"
                     onClick={() => handleViewDetail(port)}
                     title={t("ports.detail.view")}
                   >
@@ -164,3 +164,4 @@ export function PortTable({
     </>
   );
 }
+

@@ -1,18 +1,18 @@
 {
   "app": {
-    "title": "Port Killer",
+    "title": "Open Port",
     "description": "View and manage processes using TCP ports in LISTENING state"
   },
   "ports": {
     "table": {
       "port": "Port",
-      "processName": "Process Name",
+      "processName": "Process name",
       "pid": "PID",
       "protocol": "Protocol",
       "action": "Action"
     },
     "noPorts": "No listening ports found.",
-    "kill": "Kill",
+    "kill": "Kill now",
     "killing": "Killing...",
     "stats": {
       "showing": "Showing",
@@ -21,12 +21,14 @@
       "listeningPorts": "listening ports"
     },
     "detail": {
-      "title": "Port Details",
+      "title": "Port details",
       "description": "Detailed information about the listening port",
-      "view": "View Details",
+      "view": "View details",
       "protocol": "Protocol",
       "state": "State",
-      "localAddress": "Local Address",
+      "localAddress": "Local address",
+      "copyAddress": "Copy address",
+      "copied": "Copied to clipboard",
       "close": "Close"
     }
   },
@@ -38,11 +40,11 @@
   },
   "dialog": {
     "kill": {
-      "title": "Confirm Kill Process",
+      "title": "Confirm kill process",
       "description": "Are you sure you want to kill process",
       "warning": "This action cannot be undone. The process will be terminated immediately.",
       "cancel": "Cancel",
-      "confirm": "Kill Process",
+      "confirm": "Kill process",
       "killing": "Killing..."
     }
   },
@@ -59,7 +61,8 @@
     "minimize": "Minimize",
     "maximize": "Maximize",
     "restore": "Restore",
-    "close": "Close"
+    "close": "Close",
+    "toggleSidebar": "Toggle sidebar"
   },
   "settings": {
     "title": "Settings",
@@ -67,6 +70,11 @@
     "theme": "Theme",
     "themeLight": "Light",
     "themeDark": "Dark",
-    "themeSystem": "System"
+    "themeSystem": "System",
+    "advanced": "Advanced",
+    "behavior": "Behavior",
+    "autoRefresh": "Auto refresh interval",
+    "sidebarMode": "Default sidebar mode",
+    "confirmKill": "Ask before killing process"
   }
 }

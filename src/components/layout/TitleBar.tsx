@@ -1,13 +1,24 @@
 import { useState, useEffect } from "react";
 import { getCurrentWindow } from "@tauri-apps/api/window";
-import { Activity, Minus, Square, X, Fullscreen } from "lucide-react";
+import {
+  Minus,
+  Square,
+  X,
+  Fullscreen,
+  PanelLeftOpen,
+  PanelLeftClose,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SettingsMenu } from "./SettingsMenu";
 import { useTranslation } from "react-i18next";
 import { cn } from "@/lib/utils";
 import { isTauri } from "@/utils/tauri";
 
-export function TitleBar() {
+type TitleBarProps = {
+  sidebarCollapsed: boolean;
+  onToggleSidebar: () => void;
+};
+
+export function TitleBar({ sidebarCollapsed, onToggleSidebar }: TitleBarProps) {
   const { t } = useTranslation();
   const [isMaximized, setIsMaximized] = useState(false);
 
@@ -113,13 +124,22 @@ export function TitleBar() {
 
   return (
     <div
-      className="fixed top-0 left-0 right-0 z-50 flex h-9 items-center justify-between border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80"
+      className="fixed top-0 left-0 right-0 z-50 flex h-9 items-center justify-between border-b border-border backdrop-blur"
+      style={{ backgroundColor: "var(--titlebar)" }}
       data-tauri-drag-region
     >
       {/* Left section: App icon + name */}
-      <div className="flex items-center gap-2 px-3" data-tauri-drag-region>
+      <div className="flex items-center gap-2 px-1.5" data-tauri-drag-region>
         <div className="flex items-center gap-2">
-          <Activity className="h-4 w-4 text-primary" />
+          <img
+            src="/app-icon.png"
+            alt="App Icon"
+            className="h-8 w-8 object-contain pointer-events-none select-none shrink-0"
+            style={{
+              imageRendering: "crisp-edges",
+              backgroundColor: "transparent",
+            }}
+          />
           <span className="text-sm font-semibold">{t("app.title")}</span>
         </div>
       </div>
@@ -127,15 +147,32 @@ export function TitleBar() {
       {/* Center section: Drag region */}
       <div className="flex-1" data-tauri-drag-region />
 
-      {/* Right section: Settings + Window controls */}
+      {/* Right section: Sidebar toggle + Window controls */}
       <div className="flex items-center no-drag">
-        <SettingsMenu />
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-6 w-6 rounded-md text-foreground/80 dark:text-foreground/90 hover:text-foreground hover:bg-border/60 dark:hover:bg-border/40 focus-visible:ring-1 focus-visible:ring-border"
+          title={t("titleBar.toggleSidebar")}
+          aria-label={t("titleBar.toggleSidebar")}
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleSidebar();
+          }}
+          onMouseDown={(e) => e.stopPropagation()}
+        >
+          {sidebarCollapsed ? (
+            <PanelLeftOpen className="h-4 w-4" />
+          ) : (
+            <PanelLeftClose className="h-4 w-4" />
+          )}
+        </Button>
 
         <div className="flex items-center">
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-[46px] rounded-none hover:bg-accent"
+            className="h-9 w-[46px] cursor-default rounded-none text-foreground/80 dark:text-foreground/90 hover:text-foreground hover:bg-border/70 dark:hover:bg-border/40 focus-visible:ring-1 focus-visible:ring-border"
             onClick={handleMinimize}
             onMouseDown={(e) => e.stopPropagation()}
             title={t("titleBar.minimize")}
@@ -146,7 +183,7 @@ export function TitleBar() {
           <Button
             variant="ghost"
             size="icon"
-            className="h-9 w-[46px] rounded-none hover:bg-accent"
+            className="h-9 w-[46px] cursor-default rounded-none text-foreground/80 dark:text-foreground/90 hover:text-foreground hover:bg-border/70 dark:hover:bg-border/40 focus-visible:ring-1 focus-visible:ring-border"
             onClick={handleMaximize}
             onMouseDown={(e) => e.stopPropagation()}
             title={isMaximized ? t("titleBar.restore") : t("titleBar.maximize")}
@@ -162,8 +199,8 @@ export function TitleBar() {
             variant="ghost"
             size="icon"
             className={cn(
-              "h-9 w-[46px] rounded-none hover:bg-red-500 hover:text-white",
-              "transition-colors"
+              "h-9 w-[46px] cursor-default rounded-none transition-colors text-foreground/80 dark:text-foreground/90",
+              "hover:bg-red-500 hover:text-white dark:hover:bg-red-600 focus-visible:ring-1 focus-visible:ring-red-500"
             )}
             onClick={handleClose}
             onMouseDown={(e) => e.stopPropagation()}

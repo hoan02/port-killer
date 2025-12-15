@@ -3,7 +3,7 @@ import { initReactI18next } from "react-i18next";
 import enTranslations from "./locales/en.json";
 import viTranslations from "./locales/vi.json";
 
-const LANGUAGE_STORAGE_KEY = "port-killer-language";
+const LANGUAGE_STORAGE_KEY = "open-port-language";
 
 // Detect system language
 const getSystemLanguage = (): string => {

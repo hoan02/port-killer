@@ -26,3 +26,4 @@ export function PortStats({ total, filtered, hasFilter }: PortStatsProps) {
     </div>
   );
 }
+

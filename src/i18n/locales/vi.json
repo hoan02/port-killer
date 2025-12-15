@@ -1,18 +1,18 @@
 {
   "app": {
-    "title": "Port Killer",
+    "title": "Open Port",
     "description": "Xem và quản lý các tiến trình đang sử dụng cổng TCP ở trạng thái LISTENING"
   },
   "ports": {
     "table": {
       "port": "Cổng",
-      "processName": "Tên Tiến Trình",
+      "processName": "Tên tiến trình",
       "pid": "PID",
-      "protocol": "Giao Thức",
-      "action": "Thao Tác"
+      "protocol": "Giao thức",
+      "action": "Thao tác"
     },
     "noPorts": "Không tìm thấy cổng nào đang lắng nghe.",
-    "kill": "Kết Thúc",
+    "kill": "Kết thúc ngay",
     "killing": "Đang kết thúc...",
     "stats": {
       "showing": "Hiển thị",
@@ -21,12 +21,14 @@
       "listeningPorts": "cổng đang lắng nghe"
     },
     "detail": {
-      "title": "Chi Tiết Cổng",
+      "title": "Chi tiết cổng",
       "description": "Thông tin chi tiết về cổng đang lắng nghe",
-      "view": "Xem Chi Tiết",
-      "protocol": "Giao Thức",
-      "state": "Trạng Thái",
-      "localAddress": "Địa Chỉ Cục Bộ",
+      "view": "Xem chi tiết",
+      "protocol": "Giao thức",
+      "state": "Trạng thái",
+      "localAddress": "Địa chỉ cục bộ",
+      "copyAddress": "Sao chép địa chỉ",
+      "copied": "Đã sao chép",
       "close": "Đóng"
     }
   },
@@ -38,11 +40,11 @@
   },
   "dialog": {
     "kill": {
-      "title": "Xác Nhận Kết Thúc Tiến Trình",
+      "title": "Xác nhận kết thúc tiến trình",
       "description": "Bạn có chắc chắn muốn kết thúc tiến trình",
       "warning": "Hành động này không thể hoàn tác. Tiến trình sẽ bị kết thúc ngay lập tức.",
       "cancel": "Hủy",
-      "confirm": "Kết Thúc Tiến Trình",
+      "confirm": "Kết thúc tiến trình",
       "killing": "Đang kết thúc..."
     }
   },
@@ -59,15 +61,20 @@
     "minimize": "Thu nhỏ",
     "maximize": "Phóng to",
     "restore": "Khôi phục",
-    "close": "Đóng"
+    "close": "Đóng",
+    "toggleSidebar": "Bật/tắt thanh bên"
   },
   "settings": {
-    "title": "Cài Đặt",
-    "language": "Ngôn Ngữ",
-    "theme": "Giao Diện",
+    "title": "Cài đặt",
+    "language": "Ngôn ngữ",
+    "theme": "Giao diện",
     "themeLight": "Sáng",
     "themeDark": "Tối",
-    "themeSystem": "Hệ Thống"
+    "themeSystem": "Hệ thống",
+    "advanced": "Nâng cao",
+    "behavior": "Hành vi",
+    "autoRefresh": "Chu kỳ tự làm mới",
+    "sidebarMode": "Chế độ thanh bên mặc định",
+    "confirmKill": "Hỏi trước khi kết thúc tiến trình"
   }
 }
-

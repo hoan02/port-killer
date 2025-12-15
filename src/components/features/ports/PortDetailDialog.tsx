@@ -8,8 +8,9 @@ import {
 import { Badge } from "@/components/ui/badge";
 import type { PortInfo } from "@/types/ports";
 import { useTranslation } from "react-i18next";
-import { Info, Trash2 } from "lucide-react";
+import { Copy, Info, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { toast } from "sonner";
 
 interface PortDetailDialogProps {
   open: boolean;
@@ -25,6 +26,7 @@ export function PortDetailDialog({
   onKillClick,
 }: PortDetailDialogProps) {
   const { t } = useTranslation();
+  const localAddress = `0.0.0.0:${port?.port ?? ""}`;
 
   if (!port) return null;
 
@@ -103,19 +105,35 @@ export function PortDetailDialog({
               <label className="text-xs font-medium text-muted-foreground">
                 {t("ports.detail.localAddress")}
               </label>
-              <div className="text-xs font-mono text-muted-foreground">
-                0.0.0.0:{port.port}
+              <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                <span>{localAddress}</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  className="h-7 w-7 rounded-sm"
+                  onClick={async () => {
+                    try {
+                      await navigator.clipboard?.writeText(localAddress);
+                      toast.success(t("ports.detail.copied"));
+                    } catch (err) {
+                      toast.error(t("ports.detail.copyAddress"));
+                    }
+                  }}
+                  title={t("ports.detail.copyAddress")}
+                >
+                  <Copy className="h-4 w-4" />
+                </Button>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex justify-end gap-2 pt-2 border-t border-border">
+        <div className="flex justify-center pt-2 border-t border-border">
           {onKillClick && (
             <Button
-              variant="ghost"
-              size="icon"
-              className="h-8 w-8 rounded-sm hover:bg-destructive hover:text-destructive-foreground"
+              variant="destructive"
+              size="sm"
+              className="gap-2 px-4 min-w-32"
               onClick={() => {
                 onKillClick(port.pid, port.process_name);
                 onOpenChange(false);
@@ -123,15 +141,9 @@ export function PortDetailDialog({
               title={t("ports.kill")}
             >
               <Trash2 className="h-4 w-4" />
+              <span>{t("ports.kill")}</span>
             </Button>
           )}
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => onOpenChange(false)}
-          >
-            {t("ports.detail.close")}
-          </Button>
         </div>
       </DialogContent>
     </Dialog>

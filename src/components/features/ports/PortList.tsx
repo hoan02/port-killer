@@ -13,7 +13,16 @@ interface PortListProps {
   onSearchChange: (value: string) => void;
   onRefresh: () => void;
   onKillClick: (pid: number, processName: string) => void;
+  onMetricsChange?: (metrics: PortMetrics) => void;
 }
+
+export type PortMetrics = {
+  total: number;
+  filtered: number;
+  currentPage: number;
+  itemsPerPage: number;
+  activeFilter: string | null;
+};
 
 const DEFAULT_ITEMS_PER_PAGE = 25;
 
@@ -25,6 +34,7 @@ export function PortList({
   onSearchChange,
   onRefresh,
   onKillClick,
+  onMetricsChange,
 }: PortListProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(DEFAULT_ITEMS_PER_PAGE);
@@ -54,6 +64,24 @@ export function PortList({
   useEffect(() => {
     setCurrentPage(1);
   }, [searchTerm, activeFilter]);
+
+  // Report metrics to parent for status bar
+  useEffect(() => {
+    onMetricsChange?.({
+      total: ports.length,
+      filtered: filteredPorts.length,
+      currentPage,
+      itemsPerPage,
+      activeFilter,
+    });
+  }, [
+    ports.length,
+    filteredPorts.length,
+    currentPage,
+    itemsPerPage,
+    activeFilter,
+    onMetricsChange,
+  ]);
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);

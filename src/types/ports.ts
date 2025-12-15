@@ -5,5 +5,3 @@ export interface PortInfo {
   process_path: string;
 }
 
-
-
